@@ -1,7 +1,7 @@
 package dic.controller;
 
-import dic.dao.UserDAO;
-import dic.model.User;
+import dic.dao.DictionaryDAO;
+import dic.model.ODictionary;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -34,17 +34,12 @@ public class SearchController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		String text = request.getParameter("term");
-		System.out.println("Hello from Get Method: " +text);
-		UserDAO userDAO = new UserDAO();
+		DictionaryDAO dicDAO = new DictionaryDAO();
 		try {
-			ArrayList<User> users  = userDAO.getUsers(text);
-			for(User user: users){
-				System.out.println(user.getName());
-			}
+			ArrayList<ODictionary> odic  = dicDAO.getWords(text);
 			
-			String searchResult = new Gson().toJson(users);
+			String searchResult = new Gson().toJson(odic);
 			
 			PrintWriter writer = response.getWriter();
 			writer.write(searchResult);

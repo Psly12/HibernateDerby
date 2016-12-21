@@ -11,7 +11,7 @@ public class Database {
 		Connection connection =  null;
 		
 		// Store the database URL in a string
-		String url = "jdbc:mysql://localhost:3306/searchtutorial"; 
+		String url = "jdbc:mysql://localhost:3306/odictionary"; 
 		
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
 		
