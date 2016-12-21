@@ -25,19 +25,11 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class fetch extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {         
             String word=request.getParameter("word");
             Database db = new Database();
             Connection con = db.getConnection();
@@ -48,8 +40,9 @@ public class fetch extends HttpServlet {
             {               
                RequestDispatcher requestdispatcher=request.getRequestDispatcher("index.html");
                requestdispatcher.include(request,response);
-               out.println(rs.getString("words")+" - "+rs.getString("meaning"));
+               out.println("<br><br><div class=\"container well well-lg\">"+rs.getString("words")+" - "+rs.getString("meaning")+"</div>");
             }
+            out.println("<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" integrity=\"sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\" crossorigin=\"anonymous\"></script>");
         } catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException ex) {
             Logger.getLogger(fetch.class.getName()).log(Level.SEVERE, null, ex);
         }
