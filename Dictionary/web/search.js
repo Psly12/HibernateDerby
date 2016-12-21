@@ -20,6 +20,7 @@ $(function() {
 					 values.forEach(function (entry) {
 	                    var newObject = {
 	                        label: entry.word
+                                
 	                    };
 	                    newArray[i] = newObject;
 	                    i++;
@@ -30,5 +31,6 @@ $(function() {
         },  
         minLength: 1
     });
-    $( "#search" ).change({});
   });
+
+  

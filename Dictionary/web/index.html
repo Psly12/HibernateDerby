@@ -18,11 +18,13 @@
 	
 	<div>
 		<div>
-			<h5>Search for words</h5>
+			<h5>Search for a word</h5>
 			<div>
-				<div>
-					<input type="text" id="search" name="search" class="search" placeholder="search here"/>
-				</div>			
+                            <form method="post" action="fetch">
+                                <div>
+					<input type="text" id="search" name="word" class="search" placeholder="search here"/><input type="submit" value="Go!"/>
+				</div>
+                            </form>
 			</div>
 		</div>
 	</div>	
